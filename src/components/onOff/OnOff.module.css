@@ -1,0 +1,12 @@
+import React from 'react';
+
+export const OnOff = () => {
+    return (
+        <div>
+            <div>on</div>
+            <div>off</div>
+            <div></div>
+        </div>
+    );
+};
+

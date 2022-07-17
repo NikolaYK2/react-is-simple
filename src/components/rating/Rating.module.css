@@ -1,0 +1,41 @@
+import React from "react";
+import s from "./Rating.module.css";
+
+type RatingType = {
+    value: 0 | 1 | 2 | 3 | 4 | 5
+}
+
+export const Rating = (props: RatingType) => {
+
+    return (
+        <div className={s.rating}>
+            <Star selected={props.value > 0}/>
+            <Star selected={props.value > 1}/>
+            <Star selected={props.value > 2}/>
+            <Star selected={props.value > 3}/>
+            <Star selected={props.value > 4}/>
+            <Star selected={props.value > 5}/>
+        </div>
+    );
+}
+
+type StarType = {
+    selected: boolean
+}
+
+const Star = (props: StarType) => {
+    if (props.selected === true) {
+        return (
+            <div>
+                <span><b> X </b></span>
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <span> X </span>
+            </div>
+        )
+    }
+};
+
