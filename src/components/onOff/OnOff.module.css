@@ -5,6 +5,7 @@
     .onOff div {
         padding: 10px 20px;
         border: 2px solid black;
+        cursor: pointer;
 }
     .onOff div:nth-child(3){
         padding: 0;
@@ -14,7 +15,7 @@
         border-radius: 50%;
 }
 .on{
-    background-color: green;
+    background-color:  green;
 }
 .off{
     background-color: red;
