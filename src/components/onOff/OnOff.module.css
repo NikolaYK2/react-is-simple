@@ -1,12 +1,13 @@
 .onOff{
     display: flex;
+    justify-content: center;
     align-items: center;
     }
     .onOff div {
         padding: 10px 20px;
         border: 2px solid black;
         cursor: pointer;
-}
+    }
     .onOff div:nth-child(3){
         padding: 0;
         margin: 0 0 0 10px;
@@ -20,4 +21,8 @@
 .off{
     background-color: red;
 }
+.default{
+    background-color: aliceblue;
+}
+
 /*============================================*/

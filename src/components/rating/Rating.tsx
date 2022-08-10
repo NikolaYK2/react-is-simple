@@ -1,41 +1,57 @@
-import React, {useState} from "react";
+import React, {useState, MouseEvent} from "react";
 import s from "./Rating.module.css";
+import {ratingType} from "../../App";
+
 
 type RatingType = {
-    // value: 0 | 1 | 2 | 3 | 4 | 5
+    rating: ratingType,
+    setRating:(rating: ratingType)=>void,
 }
 
-export const Rating = (props: RatingType) => {
-
-    let [rating, setRating] = useState(0);
-
-
-
+export const Rating: React.FC<RatingType> = ({rating, setRating, ...props}) => {
+const setRatingHandler=(rating: ratingType)=>{
+    setRating(rating)
+}
     return (
         <div className={s.rating}>
             {/*заменили все if на укороченную запись*/}
-            <Star selected={rating > 0}/><button onClick={()=>setRating(rating =1)} >1</button>
-            <Star selected={rating > 1}/><button onClick={()=>setRating(rating=2)}>2</button>
-            <Star selected={rating > 2}/><button onClick={()=>setRating(rating=3)}>3</button>
-            <Star selected={rating > 3}/><button onClick={()=>setRating(rating=4)}>4</button>
-            <Star selected={rating > 4}/><button onClick={()=>setRating(rating=5)}>5</button>
+            {/*<Star selected={rating > 0} setRating={setRatingHandler} rating={1}/>*/}
+            {/*<Star selected={rating > 1} setRating={setRatingHandler} rating={2}/>*/}
+            {/*<Star selected={rating > 2} setRating={setRatingHandler} rating={3}/>*/}
+            {/*<Star selected={rating > 3} setRating={setRatingHandler} rating={4}/>*/}
+            {/*<Star selected={rating > 4} setRating={setRatingHandler} rating={5}/>*/}
+            {/*Второй способ=================================================================================*/}
+            <Star selected={rating > 0} setRating={()=> {setRatingHandler(1)}}/>
+            <Star selected={rating > 1} setRating={()=> {setRatingHandler(2)}}/>
+            <Star selected={rating > 2} setRating={()=> {setRatingHandler(3)}}/>
+            <Star selected={rating > 3} setRating={()=> {setRatingHandler(4)}}/>
+            <Star selected={rating > 4} setRating={()=> {setRatingHandler(5)}}/>
         </div>
     );
 }
 
+//=============================================================
 type StarType = {
     selected: boolean
+    // setRating: (value: ratingType)=>void,
+    setRating: ()=>void,//value уже не передаем функция setRatingHandler сама все делает
+    // rating: ratingType,
 }
 
-const Star = (props: StarType) => {
-    if (props.selected) {//укороченная запись props.selected === true
-        return (
-                <span><b>X </b></span>
-        );
-    } else {
-        return (
-                <span>X </span>
-        )
+const Star: React.FC<StarType> = ({setRating, /*rating,*/ ...props}) => {
+    // const onClockHandler=(value: ratingType)=>{
+    //     setRating(value);
+    const onClockHandler=()=>{
+        setRating();
     }
-}
+
+    return (
+        <div>
+            {/*{props.selected ? <span onClick={onClockHandler}><b> stars - </b></span> : <span> - stars </span>}*/}
+            {/*Условие делаем внутри span*/}
+            {/*<span className={s.rating} onClick={()=>onClockHandler(rating)}>{props.selected ? '★' : " ☆ "}</span>*/}
+            <span className={s.rating} onClick={onClockHandler}>{props.selected ? '★' : " ☆ "}</span>
+        </div>
+    );
+};
 

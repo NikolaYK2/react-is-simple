@@ -3,6 +3,8 @@ import s from "./OnOff.module.css";
 
 type OnOffType={
     // active:boolean,
+    on:boolean,
+    setOn:()=>void,
 }
 
 export const OnOff = (props:OnOffType) => {
@@ -19,8 +21,8 @@ export const OnOff = (props:OnOffType) => {
 const OnOffTitle = (props: OnOffType) => {
     let [on, setOn] = useState(false)
 
-    let selectOn = on ? s.on : "";
-    let selectOff = !on ? s.off : "";
+    let selectOn = on ? s.on : s.default;
+    let selectOff = !on ? s.off : s.default;
 
 
 
@@ -28,7 +30,7 @@ const OnOffTitle = (props: OnOffType) => {
         <div className={s.onOff}>
             <div className={selectOn} onClick={()=>setOn(true)}>on</div>
             <div className={selectOff} onClick={()=>setOn(false)}>off</div>
-            <div className={`${selectOn} ${selectOff}`}></div>
+            {<div className={on ? s.on : s.off}></div>}
         </div>
     );
 };

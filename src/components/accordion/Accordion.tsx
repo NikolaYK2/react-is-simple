@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
+import s from './Accordion.module.css';
 
 type AccordionType = {
     titleValue: string,
+    collapsed:boolean,
+    setCollapsed:()=>void
     // collapsed: boolean,
 }
 export const Accordion = (props: AccordionType) => {
-    let [collapsed, setCollapsed] = useState(false)
 
     const control = ()=>{
         if(!collapsed){
@@ -16,7 +18,7 @@ export const Accordion = (props: AccordionType) => {
     }
     return (
         <div>
-            <AccordionTitle title={props.titleValue} control={control}/>
+            <AccordionTitle title={props.titleValue} control={control} collapsed={collapsed}/>
             {collapsed && <AccordionBody/>}
             {/*по сути у нас collapsed=true но !-говорит что false*/}
         </div>
@@ -27,19 +29,19 @@ export const Accordion = (props: AccordionType) => {
 type AccordionTitleType = {
     title: string,
     control:()=>void
+    collapsed:boolean,
 }
 
 const AccordionTitle = (props: AccordionTitleType) => {
     const onClockHandler=()=>{
         props.control()
     }
-
-    const accordStyle ={//css как бы кнопки
-        cursor: "pointer",
-    }
+    // const accordStyle ={//css как бы кнопки
+    //     cursor: "pointer",
+    // }
     return (
-        <div>
-            <h1 style={accordStyle} onClick={onClockHandler}>-- {props.title} --</h1>
+        <div className={s.title}>
+            <h1 className={props.collapsed ? s.green : s.red} onClick={onClockHandler}>-- {props.title} --</h1>
         </div>
     );
 };

@@ -1,0 +1,22 @@
+.title{
+    width: 200px;
+    margin: 0 auto;
+}
+ul{
+    background-color: aliceblue;
+    width: 100px;
+    text-align: center;
+    margin: -20px auto 20px;
+    border-radius: 0 20px 0 20px;
+}
+h1{
+    cursor: pointer;
+}
+.red{
+    border-radius:  0 0 20px 20px;
+    background-color: rgba(255, 0, 0, 0.6);
+}
+.green{
+    border-radius: 20px 20px 0 0;
+    background-color: rgba(0, 128, 0, 0.6);
+}
