@@ -12,7 +12,7 @@ function App() {
 //======Rating=============================================
     let [rating, setRating] = useState<ratingType>(0);
     //===Acardion==============================================
-    let [collapsed, setCollapsed] = useState(false)
+    let [collapsed, setCollapsed] = useState<boolean>(false)
     // ===onOff====================================================
     let [on, setOn] = useState(false)
     // ===============================================
@@ -29,7 +29,7 @@ function App() {
             <Accordion titleValue={"Menu"} collapsed={collapsed} setCollapsed={setCollapsed}/>
             <Accordion titleValue={"Users"} collapsed={collapsed} setCollapsed={setCollapsed}/>
             {/*<OnOff active={true}/>*/}
-            <OnOff on={on} setOn={setOn}/>
+            <OnOff on={on} setOn={setOn}/> {on.toString()}
         </div>
     );
 }

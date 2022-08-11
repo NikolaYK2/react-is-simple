@@ -1,25 +1,26 @@
-import React, {useState} from 'react';
+import React from 'react';
 import s from './Accordion.module.css';
 
 type AccordionType = {
     titleValue: string,
     collapsed:boolean,
-    setCollapsed:()=>void
-    // collapsed: boolean,
+    setCollapsed:(value: boolean)=>void
 }
 export const Accordion = (props: AccordionType) => {
 
     const control = ()=>{
-        if(!collapsed){
-            setCollapsed(true)
+        if(!props.collapsed){
+            props.setCollapsed(true)
         }else {
-            setCollapsed(false)
+            props.setCollapsed(false)
         }
     }
     return (
         <div>
-            <AccordionTitle title={props.titleValue} control={control} collapsed={collapsed}/>
-            {collapsed && <AccordionBody/>}
+            <AccordionTitle title={props.titleValue}
+                            control={control}
+                            collapsed={props.collapsed}/>
+            {props.collapsed && <AccordionBody/>}
             {/*по сути у нас collapsed=true но !-говорит что false*/}
         </div>
     );
@@ -45,7 +46,7 @@ const AccordionTitle = (props: AccordionTitleType) => {
         </div>
     );
 };
-
+//============================================================================
 const AccordionBody = () => {
     return (
         <div>
