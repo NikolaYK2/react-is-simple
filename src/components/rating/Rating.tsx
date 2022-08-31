@@ -1,9 +1,9 @@
-import React, {useState, MouseEvent} from "react";
+import React from "react";
 import s from "./Rating.module.css";
 import {ratingType} from "../../App";
 
 
-type RatingType = {
+export type RatingType = {
     rating: ratingType,
     setRating:(rating: ratingType)=>void,
 }
@@ -31,14 +31,14 @@ const setRatingHandler=(rating: ratingType)=>{
 }
 
 //=============================================================
-type StarType = {
+export type StarType = {
     selected: boolean
-    // setRating: (value: ratingType)=>void,
     setRating: ()=>void,//value уже не передаем функция setRatingHandler сама все делает
+    // setRating: (value: ratingType)=>void,
     // rating: ratingType,
 }
 
-const Star: React.FC<StarType> = ({setRating, /*rating,*/ ...props}) => {
+export const Star: React.FC<StarType> = ({setRating, /*rating,*/ ...props}) => {
     // const onClockHandler=(value: ratingType)=>{
     //     setRating(value);
     const onClockHandler=()=>{

@@ -27,9 +27,9 @@ function App() {
             Article 1
             <Rating rating={rating} setRating={setRating} />
             <Accordion titleValue={"Menu"} collapsed={collapsed} setCollapsed={setCollapsed}/>
-            <Accordion titleValue={"Users"} collapsed={collapsed} setCollapsed={setCollapsed}/>
             {/*<OnOff active={true}/>*/}
-            <OnOff on={on} setOn={setOn}/> {on.toString()}
+            <OnOff on={on} setOn={setOn}/>
+            {on.toString()}
         </div>
     );
 }
@@ -38,7 +38,6 @@ type PageTitlePropsType = {
     title: String,
 }
 function PageTitle(props: PageTitlePropsType) {
-    console.log("AppTitle rendering")
     return <h1>{props.title}</h1>;
 }
 
