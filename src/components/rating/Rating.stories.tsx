@@ -5,7 +5,7 @@ import {ratingType} from "../../App";
 import {action} from "@storybook/addon-actions";
 
 export default {
-    title: 'Rating',
+    title: 'components/Rating',
     component: Rating,
 } as ComponentMeta<typeof Rating>;
 

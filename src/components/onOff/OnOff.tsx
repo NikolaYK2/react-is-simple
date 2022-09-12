@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "./OnOff.module.css";
 
-type OnOffType={
+export type OnOffType={
     // active:boolean,
     on:boolean,
     setOn:(value: boolean)=>void,

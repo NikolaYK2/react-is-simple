@@ -4,11 +4,16 @@ import {OnOff} from "./OnOff";
 import {action} from "@storybook/addon-actions";
 
 export default {
-    title: 'OnOff',
+    title: 'components/OnOff',
     component: OnOff,
 } as ComponentMeta<typeof OnOff>;
 
 const setOn=action("нажата")
+
+const setOnAll ={
+    on:false,
+    setOn:setOn,
+}
 const Template: ComponentStory<typeof OnOff> = (args) => {
     return (
         <OnOff {...args}/>
@@ -16,11 +21,10 @@ const Template: ComponentStory<typeof OnOff> = (args) => {
 }
 export const OnOffControl = Template.bind({});
 OnOffControl.args = {
-    on:true,
-    setOn:setOn,
+    ...setOnAll,
 }
 
-const Template1: ComponentStory<typeof OnOff> = (args) => {
+const Template1: ComponentStory<typeof OnOff> = (args, context) => {
     let [on, setOn] = useState(false)
     return (
         <OnOff on={on} setOn={setOn}/>
@@ -29,7 +33,6 @@ const Template1: ComponentStory<typeof OnOff> = (args) => {
 
 export const OnOffChange = Template1.bind({});
 OnOffChange.args = {
-    on:false,
-    setOn:()=>{},
+    ...setOnAll,
 }
 
