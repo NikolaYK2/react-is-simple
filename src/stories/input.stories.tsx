@@ -1,9 +1,10 @@
 import React, {ChangeEvent, KeyboardEvent, useRef, useState} from 'react';
 import {ComponentStory} from '@storybook/react';
+import {action} from "@storybook/addon-actions";
 
 
 export default {
-    title: 'input',
+    title: 'tegs/input',
     // component: Rating,
 
 };
@@ -51,8 +52,45 @@ const Template2: ComponentStory<any> = () => {
 }
 export const GetValueOfUncontrolledInputByButtonPress = Template2.bind({});
 
+//Контролируемый
+const Template3: ComponentStory<any> = () => {
+    const [parentValue, setParentValue] = useState('');
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setParentValue(e.currentTarget.value)
+    }
+    return <input value={parentValue} onChange={onChangeHandler}/>;
+};
+export const ControlledInput = Template3.bind({});
 
-const Template3: ComponentStory<any> = () => <input value={'hi-Nik'}/>;
+//Контролируемый checkbox
+const Template4: ComponentStory<any> = () => {
+    const [check, setCheck] = useState(true)
+    const onChangeCheck = (e: ChangeEvent<HTMLInputElement>) => {
+        setCheck(e.currentTarget.checked)
+    }
+    return <input type='checkbox' checked={check} onChange={onChangeCheck}/>;
+}
+export const ControlledCheckbox = Template4.bind({});
+
+//Контролируемый
+const Template5: ComponentStory<any> = () => {
+    const [select, setSelect]=useState<string | undefined>(undefined)
+    const onChangeSelect=(e:ChangeEvent<HTMLSelectElement>)=>{
+        setSelect(e.currentTarget.value)
+    }
+    return (
+        <select value={select} onChange={onChangeSelect}>
+            <option></option>
+            <option value='1'>Molodechno</option>
+            <option value='2'>Minsk</option>
+            <option value='3'>Kiev</option>
+        </select>
+    );
+}
+
+export const ControlledSelect = Template5.bind({});
+
+const Template6: ComponentStory<any> = () => <input value={'hi-Nik'}/>;
 //Контролируемый с фиксированным значением
-export const ControlledInputFixedValue = Template3.bind({});
+export const ControlledInputFixedValue = Template6.bind({});
 
