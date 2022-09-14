@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("https://phonoteka.org/uploads/posts/2021-04/1618326143_4-phonoteka_org-p-obemnii-fon-4.jpg") 0 0/cover no-repeat;
+  background: url("https://phonoteka.org/uploads/posts/2021-04/1618326143_4-phonoteka_org-p-obemnii-fon-4.jpg") 0 0/cover no-repeat fixed;
 }
 
 code {

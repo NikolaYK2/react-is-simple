@@ -1,10 +1,17 @@
 import React from 'react';
 import s from './Accordion.module.css';
 
+type ItemType={
+    title: string,
+    value: any,
+}
+
 type AccordionType = {
     titleValue: string,
     collapsed:boolean,
-    setCollapsed:(value: boolean)=>void
+    setCollapsed:(value: boolean)=>void,
+    items: ItemType[],
+    onClick:(value:any)=>void,
 }
 export const Accordion = (props: AccordionType) => {
 
@@ -20,7 +27,7 @@ export const Accordion = (props: AccordionType) => {
             <AccordionTitle title={props.titleValue}
                             control={control}
                             collapsed={props.collapsed}/>
-            {props.collapsed && <AccordionBody/>}
+            {props.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
             {/*по сути у нас collapsed=true но !-говорит что false*/}
         </div>
     );
@@ -47,13 +54,19 @@ const AccordionTitle = (props: AccordionTitleType) => {
     );
 };
 //============================================================================
-const AccordionBody = () => {
+type AccordionBodyType={
+    items: ItemType[],
+    onClick:(value:any)=>void,
+}
+const AccordionBody = (props:AccordionBodyType) => {
+
+    const onClickHandler=(value:any)=>{
+        props.onClick(value)
+    }
     return (
         <div>
             <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
+                {props.items.map((its,index)=>(<li onClick={onClickHandler} key={index}>{its.title}</li>))}
             </ul>
         </div>
     );
