@@ -7,7 +7,7 @@ type ItemType = {
 }
 
 type SelectType = {
-    selectAc: any,
+    selectAc: boolean,
     setSelectAc: (selectAc: boolean) => void,
     items: ItemType[],
     setItems: (items: ItemType[]) => void,
