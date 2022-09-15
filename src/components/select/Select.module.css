@@ -1,0 +1,56 @@
+@keyframes divSelect {
+    0% {
+        transform: translateY(-115px)
+    }
+    100% {
+        transform: translateY(-5px)
+    }
+}
+@keyframes divSelect1 {
+    0% {
+        transform: translateY(-5px)
+    }
+    100% {
+        transform: translateY(-115px)
+    }
+}
+.s{
+    overflow: hidden;
+}
+.blockSelect {
+    max-width: 100px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 5px 0 5px 0;
+    overflow: hidden;
+    }
+    .blockSelect__title {
+        background-color: white;
+        position: relative;
+        border-radius: 0 0 5px 0;
+        z-index: 2;
+        cursor: pointer;
+    }
+    .blockSelect__item:hover{
+        background-color: #c7c2c2;
+        cursor: pointer;
+    }
+    .blockSelect__item:last-child:hover{
+        border-radius: 0 0 5px 0;
+
+    }
+        .blockSelect__itemsActive{
+            background-color: white;
+            animation: divSelect 0.7s ease-in-out forwards;
+            border-radius: 0 0 5px 0;
+
+        }
+        .blockSelect__itemsUnActive{
+            background-color: white;
+            border-radius: 0 0 5px 0;
+            animation: divSelect1 0.7s ease forwards;
+
+        }
+.closed{
+    transform: translateY(-115px);
+}
