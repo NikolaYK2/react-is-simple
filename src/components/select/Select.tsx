@@ -60,7 +60,7 @@ export const Select = (props: SelectType) => {
     const onClick = (title: string) => {
         setValueTitle(title)
         props.setSelectAc(false);
-        // setStyle(s.blockSelect__itemsUnActive)
+        setStyle(s.blockSelect__itemsUnActive)
     }
 
     // const onKeyDownHandler =(e:KeyboardEvent<HTMLDivElement>)=>{
