@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
 import {ComponentMeta, ComponentStory} from "@storybook/react";
-import {action} from "@storybook/addon-actions";
 import {Accordion} from "./Accordion";
+import {action} from "@storybook/addon-actions";
+import {reducer} from "./Reducer";
 
 export default {
     title: 'components/Accordion',
@@ -19,18 +20,16 @@ const Template: ComponentStory<typeof Accordion> = (args) => {
 export const AccordionControl = Template.bind({});
 AccordionControl.args = {
     titleValue:'Menu',
-    setCollapsed: setCollapsed,
-    collapsed: false,
     onClick: onClick,
     items:[]
 }
 
 
 const Template1: ComponentStory<typeof Accordion> = () => {
-    let [collapsed, setCollapsed] = useState<boolean>(false)
+    let [state, dispatchCollapsed] = useReducer(reducer,{collapsed:false})
     return (
-        <Accordion collapsed={collapsed}
-                   setCollapsed={setCollapsed}
+        <Accordion state={state}
+                   dispatchCollapsed={dispatchCollapsed}
                    titleValue='Menu'
                    onClick={(value)=>{alert(`users ${value}` )}}
                    items={[
@@ -46,8 +45,7 @@ const Template1: ComponentStory<typeof Accordion> = () => {
 export const AccordionChange = Template1.bind({});
 AccordionChange.args = {
     titleValue:'Menu',
-    setCollapsed: ()=>{},
-    collapsed: false,
+    // setCollapsed: ()=>{},
     onClick:onClick,
     items:[
         {title:'Nik', value: 1 },

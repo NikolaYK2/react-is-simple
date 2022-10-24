@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Accordion.module.css';
+import {ReducerType, StateType} from "./Reducer";
 
 type ItemType={
     title: string,
@@ -8,26 +9,32 @@ type ItemType={
 
 type AccordionType = {
     titleValue: string,
-    collapsed:boolean,
-    setCollapsed:(value: boolean)=>void,
+    state:StateType,
+    dispatchCollapsed:(value: ReducerType)=>void,
+    // setCollapsed:(value: boolean)=>void,
     items: ItemType[],
-    onClick:(value:any)=>void,
+    onClick:(value:ReducerType)=>void,
 }
 export const Accordion = (props: AccordionType) => {
 
     const control = ()=>{
-        if(!props.collapsed){
-            props.setCollapsed(true)
-        }else {
-            props.setCollapsed(false)
+        if(!props.state.collapsed){
+            props.dispatchCollapsed({type: 'COLLAPSED'});
+        } else {
+            props.dispatchCollapsed({type: 'COLLAPSED'});
         }
+        // if(!props.collapsed){
+        //     props.setCollapsed(true)
+        // }else {
+        //     props.setCollapsed(false)
+        // }
     }
     return (
         <div>
             <AccordionTitle title={props.titleValue}
                             control={control}
-                            collapsed={props.collapsed}/>
-            {props.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
+                            state={props.state}/>
+            {props.state.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
             {/*по сути у нас collapsed=true но !-говорит что false*/}
         </div>
     );
@@ -37,7 +44,7 @@ export const Accordion = (props: AccordionType) => {
 type AccordionTitleType = {
     title: string,
     control:()=>void
-    collapsed:boolean,
+    state:StateType,
 }
 
 const AccordionTitle = (props: AccordionTitleType) => {
@@ -49,7 +56,7 @@ const AccordionTitle = (props: AccordionTitleType) => {
     // }
     return (
         <div className={s.title}>
-            <h1 className={props.collapsed ? s.green : s.red} onClick={onClockHandler}>-- {props.title} --</h1>
+            <h1 className={props.state.collapsed ? s.green : s.red} onClick={onClockHandler}>-- {props.title} --</h1>
         </div>
     );
 };
