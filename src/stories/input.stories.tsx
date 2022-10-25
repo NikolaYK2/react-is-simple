@@ -1,6 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent, useRef, useState} from 'react';
 import {ComponentStory} from '@storybook/react';
-import {action} from "@storybook/addon-actions";
 
 
 export default {
