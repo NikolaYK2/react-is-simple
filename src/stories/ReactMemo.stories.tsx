@@ -89,7 +89,6 @@ export const DifficultCourtingExample = Template1.bind({})
 //====================================================================
 
 const Template2: ComponentStory<any> = () => {
-    console.log('counter')
     const [counter, setCounter] = useState(0)
     const [users, setUsers] = useState(['Nik', 'Vita', 'Dima', 'Vova', 'Denis'])
 
@@ -97,9 +96,9 @@ const Template2: ComponentStory<any> = () => {
         setCounter(counter + 1)
     }
 
-    const newUsers = useMemo(()=>{
-       return  users.filter(u=>u.toLowerCase().indexOf('a')> -1);
-    },[users]);
+    const newUsers = useMemo(() => {
+        return users.filter(u => u.toLowerCase().indexOf('a') > -1);
+    }, [users]);
 
     const addUserHandler = () => {
         setUsers([...users, 'Nasta'])
@@ -107,7 +106,7 @@ const Template2: ComponentStory<any> = () => {
         // setUsers(users);
     }
 
-
+    console.log('counter')
     return <>
         <button onClick={onClickHandler}>+</button>
         <button onClick={addUserHandler}>add user</button>
@@ -115,8 +114,6 @@ const Template2: ComponentStory<any> = () => {
         <UsersShell users={newUsers}/>
     </>
 }
-
-
 //сложное вычисление
 export const helpsToReactMemo = Template2.bind({})
 //================================================================
