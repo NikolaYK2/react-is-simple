@@ -1,5 +1,5 @@
 import {ComponentStory} from "@storybook/react";
-import React, {useMemo, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 
 export default {
     title: 'components/React.memo demo'
@@ -88,32 +88,56 @@ const Template1: ComponentStory<any> = () => {
 export const DifficultCourtingExample = Template1.bind({})
 //====================================================================
 
+
+const Books = (props: { books: Array<string>; addBookHandler: () => void }) => {
+    console.log('book')
+    return <div>
+        {props.books.map((b, i) => <div key={i}>{b}</div>)}
+        <button onClick={props.addBookHandler}>add user</button>
+    </div>
+}
+const UsersBooks = React.memo(Books);
+
 const Template2: ComponentStory<any> = () => {
+    console.log('LikeBookCallback')
     const [counter, setCounter] = useState(0)
-    const [users, setUsers] = useState(['Nik', 'Vita', 'Dima', 'Vova', 'Denis'])
+    const [books, setBooks] = useState(['the Witcher', 'pesn lda i plameni', 'Ono', 'Tuman', 'Vlastelin kolec'])
+
+
+    const newBooks = useMemo(() => {
+        return books.filter(b => b.toLowerCase().indexOf('w') > -1);
+    }, [books]);
 
     const onClickHandler = () => {
         setCounter(counter + 1)
     }
 
-    const newUsers = useMemo(() => {
-        return users.filter(u => u.toLowerCase().indexOf('a') > -1);
-    }, [users]);
+    // const addBookHandler = () => {
+    //     setBooks([...books, 'Witcher'])
+    //     // users.push('Nasta' + new Date().getTime())
+    //     // setUsers(users);
+    // }
+    // const memoizedAddBook = useMemo(()=>{
+    //     return addBookHandler;
+    // }, [books]);// проверяет поменялось ли что нибудь в [books]
+//Сокращенная запись, сразу в хуке добаляем книги
+    const memoizedAddBook = useMemo(()=>{
+        return ()=> setBooks([...books, 'Witcher'])
+            // users.push('Nasta' + new Date().getTime())
+            // setUsers(users);
+    }, [books]);// проверяет поменялось ли что нибудь в [books]
+    const memoizedAddBook2 = useCallback( ()=> {
+        setBooks([...books, 'Witcher'])
+            // users.push('Nasta' + new Date().getTime())
+            // setUsers(users);
+    }, [books]);// проверяет поменялось ли что нибудь в [books]
 
-    const addUserHandler = () => {
-        setUsers([...users, 'Nasta'])
-        // users.push('Nasta' + new Date().getTime())
-        // setUsers(users);
-    }
-
-    console.log('counter')
     return <>
         <button onClick={onClickHandler}>+</button>
-        <button onClick={addUserHandler}>add user</button>
         {counter}
-        <UsersShell users={newUsers}/>
+        <UsersBooks books={newBooks} addBookHandler={memoizedAddBook2}/>
     </>
 }
 //сложное вычисление
-export const helpsToReactMemo = Template2.bind({})
+export const UseMemoUseCallback = Template2.bind({})
 //================================================================
