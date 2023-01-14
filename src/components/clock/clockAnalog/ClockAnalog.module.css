@@ -1,0 +1,40 @@
+.containerClock{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.arrowSecond{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    height: 1px;
+    width: 60px;
+    background: linear-gradient(90deg, rgb(114, 252, 2) 50%, transparent 50%);
+    border-radius: 1px;
+}
+
+.arrowMinutes{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    height: 2px;
+    width: 60px;
+    background: linear-gradient(90deg, rgb(158, 27, 194) 50%, transparent 50%);
+    border-radius: 1px;
+}
+
+.arrowHour{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    height: 2px;
+    width: 40px;
+    background: linear-gradient(90deg, rgb(0, 0, 0) 50%, transparent 50%);
+    border-radius: 1px;
+}
