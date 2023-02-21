@@ -4,7 +4,7 @@ import {ClockAnalog} from "./ClockAnalog";
 
 
 export default {
-    title: 'components/Clock',
+    title: 'components/MyClock',
     component: ClockAnalog,
 };
 

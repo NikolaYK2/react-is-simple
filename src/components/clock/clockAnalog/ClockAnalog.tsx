@@ -17,7 +17,7 @@ export const ClockAnalog: React.FC<PropsType> = (props) => {
     console.log('tik')
     const secondClock = arrow.getSeconds() * 6;
     const minutesClock = arrow.getMinutes() * 6;
-    const hourClock = arrow.getHours();
+    const hourClock = arrow.getHours() * 30;
 
     return (
         <div className={s.containerClock}>
@@ -25,7 +25,7 @@ export const ClockAnalog: React.FC<PropsType> = (props) => {
             </div>
             <div className={s.arrowMinutes} style={{transform: `rotate(${minutesClock + 90}deg)`}}>
             </div>
-            <div className={s.arrowHour} style={{transform: `rotate(${hourClock}deg)`}}>
+            <div className={s.arrowHour} style={{transform: `rotate(${hourClock + 90}deg)`}}>
             </div>
             <Clock/>
         </div>

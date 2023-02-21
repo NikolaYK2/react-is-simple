@@ -11,3 +11,8 @@ export default {
 const Template: ComponentStory<typeof Clock> = (args) => <Clock {...args}/>;
 export const BaseExempli = Template.bind({});
 BaseExempli.args = {}
+
+const Template1: ComponentStory<typeof Clock> = (args) => <Clock mode={'analog'}/>;
+export const BaseExempliAnalog = Template1.bind({});
+BaseExempli.args = {}
+

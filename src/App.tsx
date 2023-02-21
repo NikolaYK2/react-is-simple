@@ -7,6 +7,7 @@ import {Header} from "./components/Header";
 import {OnOff} from "./components/onOff/OnOff";
 import {Select} from "./components/select/Select";
 import {reducer} from "./components/accordion/Reducer";
+import {ClockAnalog} from "./components/clock/clockAnalog/ClockAnalog";
 
 export type ratingType = 0 | 1 | 2 | 3 | 4 | 5
 
@@ -60,6 +61,7 @@ function App() {
                     items={items}
                     setItems={setItems}
             />
+            <ClockAnalog/>
         </div>
     );
 }
